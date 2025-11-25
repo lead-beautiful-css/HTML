@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/src/style.css">
+
+  <style>
+    .dialog {
+      z-index: 10;
+      margin-top: 10px;
+      background: green;
+      border: none;
+      border-radius: 1rem;
+    }
+
+    .formMethod::backdrop,
+    .modal::backdrop {
+      background-color: hsl(250, 100%, 50%, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <button data-modal="open">Open Modal</button>
+  <button data-dialog="open">Open Dialog</button>
+  <button data-form="open">Open Form</button>
+  <button data-formMethod="open">Open formMethod</button>
+
+  <dialog data-dialog="content" class="dialog">
+    <p>dialog</p>
+    <button data-dialog="close">Close</button>
+  </dialog>
+
+  <dialog data-modal="content" class="modal">
+    <p>modal</p>
+    <button data-modal="close">Close</button>
+  </dialog>
+
+  <dialog data-form="content" class="form">
+    <form method="dialog">
+      <input type="text">
+      <button type="submit">Submit</button>
+    </form>
+  </dialog>
+
+  <dialog data-formMethod="content" class="formMethod">
+    <form>
+      <input type="text">
+      <button formmethod="dialog">Cancel</button>
+      <button type="submit">Submit</button>
+    </form>
+  </dialog>
+
+  <script>
+    const dialog = document.querySelector('[data-dialog=content]')
+    const dialogOpen = document.querySelector('[data-dialog=open]')
+    const dialogClose = document.querySelector('[data-dialog=close]')
+
+    const modal = document.querySelector('[data-modal=content]')
+    const modalOpen = document.querySelector('[data-modal=open]')
+    const modalClose = document.querySelector('[data-modal=close]')
+
+    const form = document.querySelector('[data-form=content]')
+    const formOpen = document.querySelector('[data-form=open]')
+
+    const formMethod = document.querySelector('[data-formMethod=content]')
+    const formMethodOpen = document.querySelector('[data-formMethod=open]')
+
+    dialogOpen.addEventListener('click', () => {
+      dialog.show()
+    })
+    dialogClose.addEventListener('click', () => {
+      dialog.close()
+    })
+
+    modalOpen.addEventListener('click', () => {
+      modal.showModal()
+    })
+    modalClose.addEventListener('click', () => {
+      modal.close()
+    })
+
+    formOpen.addEventListener('click', () => {
+      form.showModal()
+    })
+
+    formMethodOpen.addEventListener('click', () => {
+      formMethod.showModal()
+    })
+
+    formMethod.addEventListener("click", e => {
+      const dialogDimensions = formMethod.getBoundingClientRect()
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        formMethod.close()
+      }
+    })
+  </script>
+</body>
+</html>
