@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/src/style.css">
+
+  <style>
+    body {
+      display: grid;
+      gap: 1rem
+    }
+    .test {
+      font-size: .8rem;
+      position: absolute;
+      left: -1rem;
+      top: -1rem;
+    }
+    p:has(.test) {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <p>H<sub>2</sub>0</p>
+  <p>O<sub>2</sub></p>
+  <p>x<sup>2</sup> * y<sup>4</sup></p>
+
+  <p><sup class="test">42</sup>Game</p>
+</body>
+</html>
