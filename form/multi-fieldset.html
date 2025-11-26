@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <form action="/signup" method="post">
+    <fieldset>
+      <legend>Personal information</legend>
+
+      <label for="first-name">First name</label>
+      <input id="first-name" name="firstName" type="text">
+
+      <label for="last-name">Last name</label>
+      <input id="last-name" name="lastName" type="text">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email">
+    </fieldset>
+
+    <fieldset>
+      <legend>Account details</legend>
+
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text">
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password">
+    </fieldset>
+
+    <fieldset>
+      <legend>Preferences</legend>
+
+      <label>
+        <input type="checkbox" name="newsletter" value="yes">
+        Receive newsletter
+      </label>
+
+      <label>
+        <input type="checkbox" name="offers" value="yes">
+        Receive special offers
+      </label>
+    </fieldset>
+
+    <button type="submit">Sign up</button>
+  </form>
+</body>
+</html>
